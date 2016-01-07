@@ -1,4 +1,63 @@
-<form [ngFormModel]="form">
-    Title: <input type="text" ngControl="title"/>
-    Action: <input type="text" ngControl="action"/>
-</form>
+<div class="panel panel-default">
+    <div class="panel-heading">Sign in to <b><i>Tandem</i></b></div>
+    <div class="panel-body">
+        <form [ngFormModel]="formGroup" novalidate>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" ngControl="username" class="form-control" id="username" placeholder="Username">
+                <div *ngIf='controlUsername.dirty && controlUsername.errors' class="error-message">
+                    <p *ngIf='controlUsername.errors.required'>
+                        The username is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" ngControl="password" class="form-control" id="password" placeholder="Password">
+                <div *ngIf='controlPassword.dirty && controlPassword.errors' class="error-message">
+                    <p *ngIf='controlPassword.errors.required'>
+                        The password is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordConfirmation">Password confirmation</label>
+                <input type="passwordConfirmation" ngControl="passwordConfirmation" class="form-control" id="passwordConfirmation" placeholder="Password">
+                <div *ngIf='controlPasswordConfirmation.dirty && controlPasswordConfirmation.errors' class="error-message">
+                    <p *ngIf='controlPasswordConfirmation.errors.required'>
+                        The password confirmation is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="requestedLanguages">Requested languages</label>
+                <input type="requestedLanguages" ngControl="requestedLanguages" class="form-control" id="requestedLanguages" placeholder="Requested languages">
+                <div *ngIf='controlRequestedLanguages.dirty && controlRequestedLanguages.errors' class="error-message">
+                    <p *ngIf='controlRequestedLanguages.errors.required'>
+                        The requested language is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="offeredLanguages">Offered languages</label>
+                <input type="offeredLanguages" ngControl="offeredLanguages" class="form-control" id="offeredLanguages" placeholder="Offered languages">
+                <div *ngIf='controlOfferedLanguages.dirty && controlOfferedLanguages.errors' class="error-message">
+                    <p *ngIf='controlOfferedLanguages.errors.required'>
+                        The requested language is required.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mainLocation">Location</label>
+                <input type="mainLocation" ngControl="mainLocation" class="form-control" id="mainLocation" placeholder="location">
+                <div *ngIf='controlMainLocation.dirty && controlMainLocation.errors' class="error-message">
+                    <p *ngIf='controlMainLocation.errors.required'>
+                        The location is required.
+                    </p>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary pull-right" (click)="onLogin()">Login</button>
+        </form>
+    </div>
+</div>
+
