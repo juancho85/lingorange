@@ -1,3 +1,20 @@
-<p>
-  notifications Works!
-</p>
+<div *ngFor="#notification of notifications" class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{notification.title}}</div>
+        <div class="panel-body">
+            <div  class="media">
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="media-object" src="img/profile-picture.svg" alt="profile-picture">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <p>from: <i>{{notification.sender.username}}</i></p>
+                    <p>{{notification.body}}</p>
+                </div>
+            </div>
+            <button type="button" class="btn btn-default pull-right" (click)="eraseMessage(notification.id)">Erase</button>
+            <button type="button" class="btn btn-primary pull-right" (click)="sendMessage(notification.sender, notification.id)">Answer</button>
+        </div>
+    </div>
+</div>

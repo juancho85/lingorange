@@ -1,6 +1,6 @@
-<div *ngFor="#notification of notifications" class="container">
+<div *ngFor="#partner of partners" class="container">
     <div class="panel panel-default">
-        <div class="panel-heading">{{notification.title}}</div>
+        <div class="panel-heading">{{partner.username}}</div>
         <div class="panel-body">
             <div  class="media">
                 <div class="media-left media-top">
@@ -13,8 +13,8 @@
                     <p>{{notification.body}}</p>
                 </div>
             </div>
-            <button type="button" class="btn btn-default pull-right" (click)="eraseMessage(notification.id)">Erase</button>
-            <button type="button" class="btn btn-primary pull-right" (click)="sendMessage(notification.sender, notification.id)">Answer</button>
+            <button type="button" class="btn btn-default pull-right" (click)="unfollow(notification.id)">Unfollow</button>
+            <button type="button" class="btn btn-primary pull-right" (click)="sendMessage()">Send message</button>
         </div>
     </div>
 </div>

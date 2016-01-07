@@ -1,3 +1,20 @@
-<p>
-  user-partners Works!
-</p>
+<div *ngFor="#partner of partners" class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">{{partner.username}}</div>
+    <div class="panel-body">
+      <div  class="media">
+        <div class="media-left media-top">
+          <a href="#">
+            <img class="media-object" src="img/profile-picture.svg" alt="profile-picture">
+          </a>
+        </div>
+        <div class="media-body">
+          <p><b>Requested languages:</b> {{partner.requestedLanguages | ArrayJoinerPipe}}</p>
+          <p><b>Offered languages:</b> {{partner.offeredLanguages | ArrayJoinerPipe}}</p>
+        </div>
+      </div>
+      <button type="button" class="btn btn-default pull-right" (click)="unfollow()">Unfollow</button>
+      <button type="button" class="btn btn-primary pull-right" (click)="sendMessage()">Send message</button>
+    </div>
+  </div>
+</div>
