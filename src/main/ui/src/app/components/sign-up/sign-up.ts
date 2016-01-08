@@ -13,6 +13,7 @@ import {Response} from 'angular2/http';
     directives: [FORM_DIRECTIVES],
     pipes: []
 })
+
 export class SignUp {
     controlUsername =  new Control('', Validators.required);
     controlPassword =  new Control('', Validators.required);
