@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-import {FORM_DIRECTIVES, ControlGroup, Control} from 'angular2/common';
 import {FORM_DIRECTIVES, ControlGroup, Control, Validators, NgIf} from 'angular2/common';
 import {SignUpModel} from '../../services/sign-up-service/sign-up-model';
 import {SignUpService} from '../../services/sign-up-service/sign-up-service';

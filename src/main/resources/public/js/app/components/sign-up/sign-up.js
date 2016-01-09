@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/common', '../../services/sign-up-ser
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, common_2, sign_up_service_1;
+    var core_1, common_1, sign_up_service_1;
     var SignUp;
     return {
         setters:[
@@ -17,7 +17,6 @@ System.register(['angular2/core', 'angular2/common', '../../services/sign-up-ser
             },
             function (common_1_1) {
                 common_1 = common_1_1;
-                common_2 = common_1_1;
             },
             function (sign_up_service_1_1) {
                 sign_up_service_1 = sign_up_service_1_1;
@@ -26,12 +25,12 @@ System.register(['angular2/core', 'angular2/common', '../../services/sign-up-ser
             SignUp = (function () {
                 function SignUp(_signUpService) {
                     this._signUpService = _signUpService;
-                    this.controlUsername = new common_1.Control('', common_2.Validators.required);
-                    this.controlPassword = new common_1.Control('', common_2.Validators.required);
-                    this.controlPasswordConfirmation = new common_1.Control('', common_2.Validators.required);
-                    this.controlRequestedLanguages = new common_1.Control('', common_2.Validators.required);
-                    this.controlOfferedLanguages = new common_1.Control('', common_2.Validators.required);
-                    this.controlMainLocation = new common_1.Control('', common_2.Validators.required);
+                    this.controlUsername = new common_1.Control('', common_1.Validators.required);
+                    this.controlPassword = new common_1.Control('', common_1.Validators.required);
+                    this.controlPasswordConfirmation = new common_1.Control('', common_1.Validators.required);
+                    this.controlRequestedLanguages = new common_1.Control('', common_1.Validators.required);
+                    this.controlOfferedLanguages = new common_1.Control('', common_1.Validators.required);
+                    this.controlMainLocation = new common_1.Control('', common_1.Validators.required);
                     this.formGroup = new common_1.ControlGroup({
                         username: this.controlUsername,
                         password: this.controlPassword,

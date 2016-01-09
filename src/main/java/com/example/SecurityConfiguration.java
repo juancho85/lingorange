@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         //FIXME: hack to allow the loading of js files
         web
                 .ignoring()
-                .antMatchers("/js/**");
+                .antMatchers("/js/**", "/css/**", "/img/**");
     }
 
     @Autowired
