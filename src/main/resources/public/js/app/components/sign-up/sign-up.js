@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', '../../services/sign-up-service/sign-up-service'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', '../../services/sign-up-service/sign-up-service', "../../services/laguage-service/language-service"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/common', '../../services/sign-up-ser
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, sign_up_service_1;
+    var core_1, common_1, sign_up_service_1, language_service_1;
     var SignUp;
     return {
         setters:[
@@ -20,11 +20,15 @@ System.register(['angular2/core', 'angular2/common', '../../services/sign-up-ser
             },
             function (sign_up_service_1_1) {
                 sign_up_service_1 = sign_up_service_1_1;
+            },
+            function (language_service_1_1) {
+                language_service_1 = language_service_1_1;
             }],
         execute: function() {
             SignUp = (function () {
-                function SignUp(_signUpService) {
+                function SignUp(_signUpService, _languageService) {
                     this._signUpService = _signUpService;
+                    this._languageService = _languageService;
                     this.controlUsername = new common_1.Control('', common_1.Validators.required);
                     this.controlPassword = new common_1.Control('', common_1.Validators.required);
                     this.controlPasswordConfirmation = new common_1.Control('', common_1.Validators.required);
@@ -39,6 +43,9 @@ System.register(['angular2/core', 'angular2/common', '../../services/sign-up-ser
                         offeredLanguages: this.controlOfferedLanguages,
                         mainLocation: this.controlMainLocation,
                     });
+                    this.languages = _languageService.getFullLanguageListForIsoCode('en');
+                    console.log("languages:");
+                    console.log(this.languages);
                 }
                 Object.defineProperty(SignUp.prototype, "controlGroupValue", {
                     get: function () {
@@ -56,16 +63,25 @@ System.register(['angular2/core', 'angular2/common', '../../services/sign-up-ser
                         });
                     }
                 };
+                Object.defineProperty(SignUp.prototype, "selectedFields", {
+                    get: function () {
+                        var _this = this;
+                        return Object.keys(this.formGroup.controls)
+                            .filter(function (key) { return _this.formGroup.controls[key].value; });
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 SignUp = __decorate([
                     core_1.Component({
                         selector: 'sign-up',
                         templateUrl: 'js/app/components/sign-up/sign-up.html',
                         styleUrls: ['js/app/components/sign-up/sign-up.css'],
-                        providers: [sign_up_service_1.SignUpService],
-                        directives: [common_1.FORM_DIRECTIVES],
+                        providers: [sign_up_service_1.SignUpService, language_service_1.LanguageService],
+                        directives: [common_1.FORM_DIRECTIVES, common_1.NgFor],
                         pipes: []
                     }), 
-                    __metadata('design:paramtypes', [sign_up_service_1.SignUpService])
+                    __metadata('design:paramtypes', [sign_up_service_1.SignUpService, language_service_1.LanguageService])
                 ], SignUp);
                 return SignUp;
             })();

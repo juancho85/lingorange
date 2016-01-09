@@ -30,8 +30,11 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="requestedLanguages">Requested languages</label>
-                <input type="requestedLanguages" ngControl="requestedLanguages" class="form-control" id="requestedLanguages" placeholder="Requested languages">
+                <label for="requested">Offered languages</label>
+                <select ngControl="requestedLanguages" class="form-control" id="requested">
+                    <option value="" selected disabled>Please select</option>
+                    <option *ngFor="#requestedLang of languages" [value]="requestedLang.iso">{{requestedLang.name}}</option>
+                </select>
                 <div *ngIf='controlRequestedLanguages.dirty && controlRequestedLanguages.errors' class="error-message">
                     <p *ngIf='controlRequestedLanguages.errors.required'>
                         The requested language is required.
@@ -39,11 +42,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="offeredLanguages">Offered languages</label>
-                <input type="offeredLanguages" ngControl="offeredLanguages" class="form-control" id="offeredLanguages" placeholder="Offered languages">
+                <label for="offered">Offered languages</label>
+                <select ngControl="offeredLanguages" class="form-control" id="offered">
+                    <option value="" selected disabled>Please select</option>
+                    <option *ngFor="#offeredLang of languages" [value]="offeredLang.iso">{{offeredLang.name}}</option>
+                </select>
                 <div *ngIf='controlOfferedLanguages.dirty && controlOfferedLanguages.errors' class="error-message">
                     <p *ngIf='controlOfferedLanguages.errors.required'>
-                        The requested language is required.
+                        The offered language is required.
                     </p>
                 </div>
             </div>

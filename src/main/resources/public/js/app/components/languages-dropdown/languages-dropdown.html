@@ -1,0 +1,4 @@
+<select ngControl="myControl" class="form-control" [id]="id">
+    <option value="" selected disabled>Please select</option>
+    <option *ngFor="#language of languages" [value]="language.iso">{{language.name}}</option>
+</select>

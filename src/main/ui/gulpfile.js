@@ -46,6 +46,8 @@ gulp.task('play', ['ts2js'], function () {
     var port = 9000, app;
 
     gulp.watch(TS_PATHS.src, ['ts2js']);
+    gulp.watch(HTML_PATHS.src, ['copy-static']);
+    gulp.watch(CSS_PATHS.src, ['copy-static']);
 
     //app = connect().use(serveStatic(__dirname));
     app = connect().use(serveStatic(INDEX_LOCATION));
