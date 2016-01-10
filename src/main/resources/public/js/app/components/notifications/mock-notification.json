@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Hablamos alemán?",
+    "sender": {
+      "username": "Germanie",
+      "requestedLanguages": ["Spanish"],
+      "offeredLanguages": ["German"]
+    },
+    "body": "Halo, hablamos alemán? Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus."
+  },
+  {
+    "id": 2,
+    "title": "Hablamos francés?",
+    "sender": {
+      "username": "Frenchie",
+      "requestedLanguages": ["Spanish"],
+      "offeredLanguages": ["French"]
+    },
+    "body": "Hablamos francés? Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus."
+  },
+  {
+    "id": 3,
+    "title": "Hablamos alemán?",
+    "sender": {
+      "username": "Italianini",
+      "requestedLanguages": ["Spanish"],
+      "offeredLanguages": ["Italian"]
+    },
+    "body": "Hablamos italiano? Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus."
+  }
+]

@@ -3,6 +3,7 @@ import {NotificationService} from '../../services/notification-service/notificat
 import {NotificationModel} from '../../services/notification-service/notification-model';
 import {UserModel} from '../../services/user-service/user-model';
 import {NgFor} from 'angular2/common';
+import {Observable} from 'rxjs/Observable';
 
 
 
@@ -15,14 +16,10 @@ import {NgFor} from 'angular2/common';
     pipes: []
 })
 export class Notifications {
-    public notifications:NotificationModel[];
+    public notifications:Observable<any>;
 
-    constructor(private _notificationService: NotificationService) {
-        this._notificationService.getAllNotificationsForUser(new UserModel()).then((result)=>
-            {
-                this.notifications = result;
-            }
-        );
+    constructor(private notificationService: NotificationService) {
+        this.notifications = this.notificationService.getAllNotificationsForUser(new UserModel());
     }
 
     eraseMessage(messageId: number){

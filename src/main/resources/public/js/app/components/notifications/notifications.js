@@ -26,12 +26,9 @@ System.register(['angular2/core', '../../services/notification-service/notificat
             }],
         execute: function() {
             Notifications = (function () {
-                function Notifications(_notificationService) {
-                    var _this = this;
-                    this._notificationService = _notificationService;
-                    this._notificationService.getAllNotificationsForUser(new user_model_1.UserModel()).then(function (result) {
-                        _this.notifications = result;
-                    });
+                function Notifications(notificationService) {
+                    this.notificationService = notificationService;
+                    this.notifications = this.notificationService.getAllNotificationsForUser(new user_model_1.UserModel());
                 }
                 Notifications.prototype.eraseMessage = function (messageId) {
                     console.log("deleting message...");

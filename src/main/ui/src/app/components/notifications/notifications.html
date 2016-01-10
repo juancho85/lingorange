@@ -1,4 +1,4 @@
-<div *ngFor="#notification of notifications" class="container">
+<div  *ngFor="#notification of notifications | async" class="container">
     <div class="panel panel-default">
         <div class="panel-heading">{{notification.title}}</div>
         <div class="panel-body">
