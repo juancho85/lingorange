@@ -16,7 +16,7 @@ import {Observable} from 'rxjs/Observable';
     pipes: []
 })
 export class Notifications {
-    public notifications:Observable<any>;
+    public notifications: Observable<NotificationModel[]>;
 
     constructor(private notificationService: NotificationService) {
         this.notifications = this.notificationService.getAllNotificationsForUser(new UserModel());

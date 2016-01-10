@@ -1,4 +1,4 @@
-System.register(['angular2/core', "angular2/http", 'rxjs/add/operator/map', 'rxjs/add/operator/debounceTime', 'rxjs/add/operator/distinctUntilChanged', 'rxjs/add/operator/switchMap'], function(exports_1) {
+System.register(['angular2/core', "angular2/http"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17,18 +17,14 @@ System.register(['angular2/core', "angular2/http", 'rxjs/add/operator/map', 'rxj
             },
             function (http_1_1) {
                 http_1 = http_1_1;
-            },
-            function (_1) {},
-            function (_2) {},
-            function (_3) {},
-            function (_4) {}],
+            }],
         execute: function() {
             NotificationService = (function () {
                 function NotificationService(http) {
                     this.http = http;
                 }
                 NotificationService.prototype.getAllNotificationsForUser = function (user) {
-                    return this.http.get('/js/app/components/notifications/mock-notification.json')
+                    return this.http.get('/js/app/services/notification-service/mock-notification.json')
                         .map(function (request) { return request.json(); });
                 };
                 NotificationService = __decorate([
