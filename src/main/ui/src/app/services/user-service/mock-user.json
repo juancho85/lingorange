@@ -1,0 +1,22 @@
+{
+  "id": 1,
+  "username": "juancho",
+  "pic": "your.url.goes.here",
+  "authenticated": true,
+  "gender-code": "M",
+  "dateOfBirth": "1985-06-26T18:25:43.511Z",
+  "requestedLanguages": [
+    {"iso": "fr", "level": "C1"},
+    {"iso": "en", "level": "B2"},
+    {"iso": "de", "level": "A2"},
+    {"iso": "it", "level": "A1"}
+  ],
+  "offeredLanguages": [
+    {"iso": "es", "level": "C2"}
+  ],
+  "locations": [
+    {"name": "Home", "lat": 40.440296, "lng": -3.709746},
+    {"name": "work", "lat": 40.440320, "lng": -3.629357}
+  ],
+  "friendIds": [2, 3, 4]
+}
