@@ -10,29 +10,21 @@
                 <h4 class="modal-title" id="myModalLabel">Filter tandem partners</h4>
             </div>
             <div class="modal-body">
-                <form>
-                    <!--requested language-->
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="requested-language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            {{partnerFilterCriteria.partnerOfferedLanguage}}
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="requested-language">
-                            <li *ngFor="#requestedLanguage of getUserRequestedLanguages()"><a (click)="selectRequestedLanguage(requestedLanguage)" href="#">{{requestedLanguage}}</a></li>
-                        </ul>
+                <form [ngFormModel]="formGroup">
+                    <div class="form-group">
+                        <label for="requested">Requested Language</label>
+                        <select ngControl="requestedLanguage" class="form-control" id="requested">
+                            <option value="" selected disabled>Requested Language</option>
+                            <option *ngFor="#requestedLanguage of userRequestedLanguages" [value]="requestedLanguage.iso">{{requestedLanguage.name}}</option>
+                        </select>
                     </div>
-
-                    <!--offered language-->
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="offered-language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            {{partnerFilterCriteria.partnerRequestedLanguage}}
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="offered-language">
-                            <li *ngFor="#offeredLanguage of getUserOfferedLanguages()"><a (click)="selectOfferedLanguage(offeredLanguage)" href="#">{{offeredLanguage}}</a></li>
-                        </ul>
+                    <div class="form-group">
+                        <label for="requested">Offered Language</label>
+                        <select ngControl="offeredLanguage" class="form-control" id="offered">
+                            <option value="" selected disabled>Requested Language</option>
+                            <option *ngFor="#offeredLanguage of userOfferedLanguages" [value]="offeredLanguage.iso">{{offeredLanguage.name}}</option>
+                        </select>
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">

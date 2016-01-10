@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../services/notification-service/notification-service', '../../services/user-service/user-model', 'angular2/common'], function(exports_1) {
+System.register(['angular2/core', '../../services/notification-service/notification-service', 'angular2/common'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', '../../services/notification-service/notificat
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, notification_service_1, user_model_1, common_1;
+    var core_1, notification_service_1, common_1;
     var Notifications;
     return {
         setters:[
@@ -18,9 +18,6 @@ System.register(['angular2/core', '../../services/notification-service/notificat
             function (notification_service_1_1) {
                 notification_service_1 = notification_service_1_1;
             },
-            function (user_model_1_1) {
-                user_model_1 = user_model_1_1;
-            },
             function (common_1_1) {
                 common_1 = common_1_1;
             }],
@@ -28,7 +25,30 @@ System.register(['angular2/core', '../../services/notification-service/notificat
             Notifications = (function () {
                 function Notifications(notificationService) {
                     this.notificationService = notificationService;
-                    this.notifications = this.notificationService.getAllNotificationsForUser(new user_model_1.UserModel());
+                    var userModel = {
+                        "id": 1,
+                        "username": "juancho",
+                        "picUrl": "your.url.goes.here",
+                        "authenticated": true,
+                        "genderCode": "M",
+                        "dateOfBirth": "1985-06-26T18:25:43.511Z",
+                        "locale": "en",
+                        "requestedLanguages": [
+                            { "iso": "fr", "name": "French", "level": "C1" },
+                            { "iso": "en", "name": "English", "level": "B2" },
+                            { "iso": "de", "name": "German", "level": "A2" },
+                            { "iso": "it", "name": "Italian", "level": "A1" }
+                        ],
+                        "offeredLanguages": [
+                            { "iso": "es", "level": "C2" }
+                        ],
+                        "locations": [
+                            { "name": "Home", "lat": 40.440296, "lng": -3.709746 },
+                            { "name": "work", "lat": 40.440320, "lng": -3.629357 }
+                        ],
+                        "friendIds": [2, 3, 4]
+                    };
+                    this.notifications = this.notificationService.getAllNotificationsForUser(userModel);
                 }
                 Notifications.prototype.eraseMessage = function (messageId) {
                     console.log("deleting message...");

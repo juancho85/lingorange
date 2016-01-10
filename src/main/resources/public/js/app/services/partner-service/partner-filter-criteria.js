@@ -4,11 +4,11 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             PartnerFilterCriteria = (function () {
-                function PartnerFilterCriteria(partnerOfferedLanguage, partnerRequestedLanguage) {
-                    if (partnerOfferedLanguage === void 0) { partnerOfferedLanguage = ""; }
-                    if (partnerRequestedLanguage === void 0) { partnerRequestedLanguage = ""; }
-                    this.partnerOfferedLanguage = partnerOfferedLanguage;
-                    this.partnerRequestedLanguage = partnerRequestedLanguage;
+                function PartnerFilterCriteria(partnerOfferedLanguageIso, partnerRequestedLanguageIso) {
+                    if (partnerOfferedLanguageIso === void 0) { partnerOfferedLanguageIso = ""; }
+                    if (partnerRequestedLanguageIso === void 0) { partnerRequestedLanguageIso = ""; }
+                    this.partnerOfferedLanguageIso = partnerOfferedLanguageIso;
+                    this.partnerRequestedLanguageIso = partnerRequestedLanguageIso;
                 }
                 return PartnerFilterCriteria;
             })();

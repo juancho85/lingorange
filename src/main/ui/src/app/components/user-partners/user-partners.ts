@@ -20,7 +20,7 @@ export class UserPartners {
 
     constructor(private _partnerService: PartnerService) {
         //TODO: take as criteria the frienship with someone
-        var criteria = new PartnerFilterCriteria('English', 'English');
+        var criteria = new PartnerFilterCriteria('en', 'en');
         this._partnerService.getPartners(criteria).then((result)=>
             {
                 this.partners = result;

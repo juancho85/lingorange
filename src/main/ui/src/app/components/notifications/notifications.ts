@@ -19,7 +19,32 @@ export class Notifications {
     public notifications: Observable<NotificationModel[]>;
 
     constructor(private notificationService: NotificationService) {
-        this.notifications = this.notificationService.getAllNotificationsForUser(new UserModel());
+        //TODO: replace with connected user
+        var userModel = {
+            "id": 1,
+            "username": "juancho",
+            "picUrl": "your.url.goes.here",
+            "authenticated": true,
+            "genderCode": "M",
+            "dateOfBirth": "1985-06-26T18:25:43.511Z",
+            "locale": "en",
+            "requestedLanguages": [
+                {"iso": "fr", "name": "French", "level": "C1"},
+                {"iso": "en", "name": "English", "level": "B2"},
+                {"iso": "de", "name": "German", "level": "A2"},
+                {"iso": "it", "name": "Italian", "level": "A1"}
+            ],
+            "offeredLanguages": [
+                {"iso": "es", "level": "C2"}
+            ],
+            "locations": [
+                {"name": "Home", "lat": 40.440296, "lng": -3.709746},
+                {"name": "work", "lat": 40.440320, "lng": -3.629357}
+            ],
+            "friendIds": [2, 3, 4]
+        };
+
+        this.notifications = this.notificationService.getAllNotificationsForUser(userModel);
     }
 
     eraseMessage(messageId: number){

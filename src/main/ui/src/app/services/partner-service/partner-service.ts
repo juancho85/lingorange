@@ -8,11 +8,11 @@ import {MOCK_PARTNERS_OFFER_ENGLISH, MOCK_PARTNERS_OFFER_FRENCH, MOCK_PARTNERS_O
 export class PartnerService {
 
     getPartners(criteria:PartnerFilterCriteria):Promise<PartnerModel[]> {
-        if(criteria.partnerOfferedLanguage === 'French'){
+        if(criteria.partnerOfferedLanguageIso === 'fr'){
             return Promise.resolve(MOCK_PARTNERS_OFFER_FRENCH);
-        }else if (criteria.partnerOfferedLanguage === 'German'){
+        }else if (criteria.partnerOfferedLanguageIso === 'de'){
             return Promise.resolve(MOCK_PARTNERS_OFFER_GERMAN);
-        }else if (criteria.partnerOfferedLanguage === 'English'){
+        }else if (criteria.partnerOfferedLanguageIso === 'en'){
             return Promise.resolve(MOCK_PARTNERS_OFFER_ENGLISH);
         }else{
             return Promise.resolve(MOCK_PARTNERS_OFFER_ITALIAN);

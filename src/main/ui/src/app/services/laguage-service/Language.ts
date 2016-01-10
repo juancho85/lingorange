@@ -1,4 +1,5 @@
 export interface Language {
     iso: string,
-    name: string
+    name?: string,
+    level?: string
 }

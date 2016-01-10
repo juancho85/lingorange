@@ -32,7 +32,7 @@ System.register(['angular2/core', '../../services/partner-service/partner-servic
                 function UserPartners(_partnerService) {
                     var _this = this;
                     this._partnerService = _partnerService;
-                    var criteria = new partner_filter_criteria_1.PartnerFilterCriteria('English', 'English');
+                    var criteria = new partner_filter_criteria_1.PartnerFilterCriteria('en', 'en');
                     this._partnerService.getPartners(criteria).then(function (result) {
                         _this.partners = result;
                     });

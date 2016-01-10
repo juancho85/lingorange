@@ -23,13 +23,13 @@ System.register(['angular2/core', './mock-partners'], function(exports_1) {
                 function PartnerService() {
                 }
                 PartnerService.prototype.getPartners = function (criteria) {
-                    if (criteria.partnerOfferedLanguage === 'French') {
+                    if (criteria.partnerOfferedLanguageIso === 'fr') {
                         return Promise.resolve(mock_partners_1.MOCK_PARTNERS_OFFER_FRENCH);
                     }
-                    else if (criteria.partnerOfferedLanguage === 'German') {
+                    else if (criteria.partnerOfferedLanguageIso === 'de') {
                         return Promise.resolve(mock_partners_1.MOCK_PARTNERS_OFFER_GERMAN);
                     }
-                    else if (criteria.partnerOfferedLanguage === 'English') {
+                    else if (criteria.partnerOfferedLanguageIso === 'en') {
                         return Promise.resolve(mock_partners_1.MOCK_PARTNERS_OFFER_ENGLISH);
                     }
                     else {

@@ -2,6 +2,8 @@ import {Component, Output, EventEmitter} from 'angular2/core';
 import {UserService} from '../../services/user-service/user-service';
 import {UserModel} from '../../services/user-service/user-model';
 import {PartnerFilterCriteria} from './partner-filter-criteria';
+import {Language} from "../../services/laguage-service/Language";
+import {FORM_DIRECTIVES, Validators, Control, ControlGroup} from "angular2/common";
 
 declare var jQuery:any;
 
@@ -10,45 +12,45 @@ declare var jQuery:any;
     templateUrl: 'js/app/components/partner-filter/partner-filter.html',
     styleUrls: ['js/app/components/partner-filter/partner-filter.css'],
     providers: [UserService],
-    directives: [],
+    directives: [FORM_DIRECTIVES],
     pipes: [],
     events: ['filterPartners']
 })
 
 export class PartnerFilter {
-    public userRequestedLanguages:string[];
-    public userOfferedLanguages:string[];
-    public partnerFilterCriteria:PartnerFilterCriteria = new PartnerFilterCriteria("Requested Language","Offered Language");
+    controlRequestedLanguage =  new Control('', Validators.required);
+    controlOfferedLanguage =  new Control('', Validators.required);
+
+    formGroup = new ControlGroup({
+        requestedLanguage: this.controlRequestedLanguage,
+        offeredLanguage: this.controlOfferedLanguage
+    });
+
+    get controlGroupValue(): string {
+        return JSON.stringify(this.formGroup.value, null, 2);
+    }
+
+    public userRequestedLanguages:Language[];
+    public userOfferedLanguages:Language[];
+    public partnerFilterCriteria:PartnerFilterCriteria;
     @Output() filterPartners: EventEmitter<PartnerFilterCriteria> = new EventEmitter();
 
     constructor(private _userService:UserService) {
-        this._userService.getCurrentUser().then((result)=>
-            {
-                this.userRequestedLanguages = result.requestedLanguages;
-                this.userOfferedLanguages = result.offeredLanguages;
-            }
-        );
-    }
-
-    getUserRequestedLanguages():string[] {
-        return this.userRequestedLanguages;
-    }
-
-    getUserOfferedLanguages():string[] {
-        return this.userOfferedLanguages;
-    }
-
-    selectRequestedLanguage(language:string) {
-        this.partnerFilterCriteria.partnerOfferedLanguage = language;
-    }
-
-    selectOfferedLanguage(language:string) {
-        this.partnerFilterCriteria.partnerRequestedLanguage = language;
+        this._userService.getCurrentUserObs()
+            .subscribe(res => {
+                this.userRequestedLanguages = res.requestedLanguages;
+                this.userOfferedLanguages = res.offeredLanguages;
+            });
     }
 
     searchPartners(element) {
         //TODO: avoid interacting directly with the DOM
         jQuery(element).modal('hide');
-        this.filterPartners.emit(this.partnerFilterCriteria);
+
+        if(this.formGroup.valid){
+            this.partnerFilterCriteria = new PartnerFilterCriteria(this.controlRequestedLanguage.value, this.controlOfferedLanguage.value);
+            this.filterPartners.emit(this.partnerFilterCriteria);
+        }
     }
+
 }

@@ -4,13 +4,17 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             UserModel = (function () {
-                function UserModel(username, requestedLanguages, offeredLanguages) {
-                    if (username === void 0) { username = " "; }
-                    if (requestedLanguages === void 0) { requestedLanguages = []; }
-                    if (offeredLanguages === void 0) { offeredLanguages = []; }
+                function UserModel(id, username, authenticated, requestedLanguages, offeredLanguages, picUrl, genderCode, dateOfBirth, locale, locations) {
+                    this.id = id;
                     this.username = username;
+                    this.authenticated = authenticated;
                     this.requestedLanguages = requestedLanguages;
                     this.offeredLanguages = offeredLanguages;
+                    this.picUrl = picUrl;
+                    this.genderCode = genderCode;
+                    this.dateOfBirth = dateOfBirth;
+                    this.locale = locale;
+                    this.locations = locations;
                 }
                 return UserModel;
             })();

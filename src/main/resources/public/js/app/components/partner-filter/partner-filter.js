@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../services/user-service/user-service', './partner-filter-criteria'], function(exports_1) {
+System.register(['angular2/core', '../../services/user-service/user-service', './partner-filter-criteria', "angular2/common"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', '../../services/user-service/user-service', '.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, user_service_1, partner_filter_criteria_1;
+    var core_1, user_service_1, partner_filter_criteria_1, common_1;
     var PartnerFilter;
     return {
         setters:[
@@ -20,34 +20,41 @@ System.register(['angular2/core', '../../services/user-service/user-service', '.
             },
             function (partner_filter_criteria_1_1) {
                 partner_filter_criteria_1 = partner_filter_criteria_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
             }],
         execute: function() {
             PartnerFilter = (function () {
                 function PartnerFilter(_userService) {
                     var _this = this;
                     this._userService = _userService;
-                    this.partnerFilterCriteria = new partner_filter_criteria_1.PartnerFilterCriteria("Requested Language", "Offered Language");
+                    this.controlRequestedLanguage = new common_1.Control('', common_1.Validators.required);
+                    this.controlOfferedLanguage = new common_1.Control('', common_1.Validators.required);
+                    this.formGroup = new common_1.ControlGroup({
+                        requestedLanguage: this.controlRequestedLanguage,
+                        offeredLanguage: this.controlOfferedLanguage
+                    });
                     this.filterPartners = new core_1.EventEmitter();
-                    this._userService.getCurrentUser().then(function (result) {
-                        _this.userRequestedLanguages = result.requestedLanguages;
-                        _this.userOfferedLanguages = result.offeredLanguages;
+                    this._userService.getCurrentUserObs()
+                        .subscribe(function (res) {
+                        _this.userRequestedLanguages = res.requestedLanguages;
+                        _this.userOfferedLanguages = res.offeredLanguages;
                     });
                 }
-                PartnerFilter.prototype.getUserRequestedLanguages = function () {
-                    return this.userRequestedLanguages;
-                };
-                PartnerFilter.prototype.getUserOfferedLanguages = function () {
-                    return this.userOfferedLanguages;
-                };
-                PartnerFilter.prototype.selectRequestedLanguage = function (language) {
-                    this.partnerFilterCriteria.partnerOfferedLanguage = language;
-                };
-                PartnerFilter.prototype.selectOfferedLanguage = function (language) {
-                    this.partnerFilterCriteria.partnerRequestedLanguage = language;
-                };
+                Object.defineProperty(PartnerFilter.prototype, "controlGroupValue", {
+                    get: function () {
+                        return JSON.stringify(this.formGroup.value, null, 2);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 PartnerFilter.prototype.searchPartners = function (element) {
                     jQuery(element).modal('hide');
-                    this.filterPartners.emit(this.partnerFilterCriteria);
+                    if (this.formGroup.valid) {
+                        this.partnerFilterCriteria = new partner_filter_criteria_1.PartnerFilterCriteria(this.controlRequestedLanguage.value, this.controlOfferedLanguage.value);
+                        this.filterPartners.emit(this.partnerFilterCriteria);
+                    }
                 };
                 __decorate([
                     core_1.Output(), 
@@ -59,7 +66,7 @@ System.register(['angular2/core', '../../services/user-service/user-service', '.
                         templateUrl: 'js/app/components/partner-filter/partner-filter.html',
                         styleUrls: ['js/app/components/partner-filter/partner-filter.css'],
                         providers: [user_service_1.UserService],
-                        directives: [],
+                        directives: [common_1.FORM_DIRECTIVES],
                         pipes: [],
                         events: ['filterPartners']
                     }), 

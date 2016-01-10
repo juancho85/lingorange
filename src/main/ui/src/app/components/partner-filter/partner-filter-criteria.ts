@@ -1,7 +1,7 @@
 export class PartnerFilterCriteria {
 
-    constructor(public partnerOfferedLanguage:string = "",
-                public partnerRequestedLanguage:string = ""){
+    constructor(public partnerOfferedLanguageIso:string = "",
+                public partnerRequestedLanguageIso:string = ""){
 
     }
 }
