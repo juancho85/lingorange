@@ -5,17 +5,17 @@
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" ngControl="username" class="form-control" id="username" placeholder="Username">
-                <div *ngIf='controlUsername.dirty && controlUsername.errors' class="error-message">
-                    <p *ngIf='controlUsername.errors.required'>
-                        The username is required.
+                <div *ngIf='controlUsername.dirty && controlUsername.errors?.required' class="error-message">
+                    <p>
+                        The username is required....
                     </p>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" ngControl="password" class="form-control" id="password" placeholder="Password">
-                <div *ngIf='controlPassword.dirty && controlPassword.errors' class="error-message">
-                    <p *ngIf='controlPassword.errors.required'>
+                <div *ngIf='controlPassword.dirty && controlPassword.errors?.required' class="error-message">
+                    <p>
                         The password is required.
                     </p>
                 </div>
