@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', '../../pipes/array-joiner-pipe/array-joiner-pipe', '../send-message-modal/send-message-modal'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', '../send-message-modal/send-message-modal', "../../pipes/language-joiner-pipe/language-joiner-pipe"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/common', '../../pipes/array-joiner-p
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, array_joiner_pipe_1, send_message_modal_1;
+    var core_1, common_1, send_message_modal_1, language_joiner_pipe_1;
     var InfoWindow;
     return {
         setters:[
@@ -18,11 +18,11 @@ System.register(['angular2/core', 'angular2/common', '../../pipes/array-joiner-p
             function (common_1_1) {
                 common_1 = common_1_1;
             },
-            function (array_joiner_pipe_1_1) {
-                array_joiner_pipe_1 = array_joiner_pipe_1_1;
-            },
             function (send_message_modal_1_1) {
                 send_message_modal_1 = send_message_modal_1_1;
+            },
+            function (language_joiner_pipe_1_1) {
+                language_joiner_pipe_1 = language_joiner_pipe_1_1;
             }],
         execute: function() {
             InfoWindow = (function () {
@@ -47,7 +47,7 @@ System.register(['angular2/core', 'angular2/common', '../../pipes/array-joiner-p
                         styleUrls: ['js/app/components/info-window/info-window.css'],
                         providers: [],
                         directives: [common_1.NgIf, send_message_modal_1.SendMessageModal],
-                        pipes: [array_joiner_pipe_1.ArrayJoinerPipe],
+                        pipes: [language_joiner_pipe_1.LanguageJoinerPipe],
                         events: ['closePartnerDetailsEv']
                     }), 
                     __metadata('design:paramtypes', [])

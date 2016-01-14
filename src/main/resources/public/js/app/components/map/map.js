@@ -44,16 +44,18 @@ System.register(['angular2/core', '../../services/user-service/user-service', '.
                 Map.prototype.launchFilteredSearch = function (criteria) {
                     var _this = this;
                     this.removeMarkers();
-                    this._partnerService.getPartners(criteria).then(function (partners) { return _this.partnerResults = partners; });
-                    this.partnerResults.forEach(function (partner) {
-                        var gMarker = {
-                            map: _this.gMap,
-                            lat: partner.lat,
-                            lng: partner.lng,
-                            label: partner.username,
-                            partner: partner
-                        };
-                        _this.addMarker(gMarker, partner);
+                    this._partnerService.getPartners(criteria).subscribe(function (res) {
+                        res.forEach(function (partner) {
+                            var gMarker = {
+                                map: _this.gMap,
+                                lat: partner.locations[0].lat,
+                                lng: partner.locations[0].lng,
+                                label: partner.username,
+                                partner: partner
+                            };
+                            _this.addMarker(gMarker, partner);
+                            _this.partnerResults = res;
+                        });
                     });
                 };
                 Map.prototype.showPartner = function (partner) {

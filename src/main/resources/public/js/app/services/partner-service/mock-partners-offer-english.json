@@ -1,0 +1,36 @@
+[{
+  "id": 10,
+  "username": "Germanie",
+  "picUrl": "your.url.goes.here",
+  "genderCode": "M",
+  "dateOfBirth": "1986-06-26T18:25:43.511Z",
+  "locale": "en",
+  "requestedLanguages": [
+    {"iso": "es", "name": "Spanish", "level": "C1"}
+  ],
+  "offeredLanguages": [
+    {"iso": "de", "name": "German", "level": "C2"},
+    {"iso": "en", "name": "English", "level": "B2"}
+  ],
+  "locations": [
+    {"name": "Haus", "lat": 40.439121, "lng": -3.712535}
+  ]
+},{
+  "id": 11,
+  "username": "Frenchie",
+  "picUrl": "your.url.goes.here",
+  "genderCode": "M",
+  "dateOfBirth": "1987-06-26T18:25:43.511Z",
+  "locale": "en",
+  "requestedLanguages": [
+    {"iso": "es", "name": "Spanish", "level": "C1"}
+  ],
+  "offeredLanguages": [
+    {"iso": "fr", "name": "French", "level": "C2"},
+    {"iso": "en", "name": "English", "level": "B2"}
+  ],
+  "locations": [
+    {"name": "Maison", "lat": 40.416906, "lng": -3.677388}
+  ]
+}
+]

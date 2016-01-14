@@ -1,4 +1,4 @@
-<div *ngFor="#partner of partners" class="container">
+<div *ngFor="#partner of partners | async" class="container">
   <div class="panel panel-default">
     <div class="panel-heading">{{partner.username}}</div>
     <div class="panel-body">
@@ -9,8 +9,8 @@
           </a>
         </div>
         <div class="media-body">
-          <p><b>Requested languages:</b> {{partner.requestedLanguages | ArrayJoinerPipe}}</p>
-          <p><b>Offered languages:</b> {{partner.offeredLanguages | ArrayJoinerPipe}}</p>
+          <p><b>Requested languages:</b> {{partner.requestedLanguages | LanguageJoinerPipe}}</p>
+          <p><b>Offered languages:</b> {{partner.offeredLanguages | LanguageJoinerPipe}}</p>
         </div>
       </div>
       <button type="button" class="btn btn-default pull-right" (click)="unfollow()">Unfollow</button>

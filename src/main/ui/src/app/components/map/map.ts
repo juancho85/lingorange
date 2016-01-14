@@ -4,10 +4,10 @@ import {PartnerFilter} from '../partner-filter/partner-filter';
 import {PartnerFilterCriteria} from '../partner-filter/partner-filter-criteria';
 import {InfoWindow} from '../info-window/info-window';
 import {UserModel} from '../../services/user-service/user-model';
-import {PartnerModel} from '../../services/partner-service/partner-model';
 import {PartnerService} from '../../services/partner-service/partner-service';
 import {MAP_DEFAULT_OPTIONS} from './map-default-options';
 import {Marker} from './Marker';
+import {Observable} from "rxjs/Observable";
 
 declare var google:any;
 
@@ -22,8 +22,8 @@ declare var google:any;
 
 export class Map {
     gMap:any;
-    selectedPartner: PartnerModel;
-    partnerResults: PartnerModel[] = [];
+    selectedPartner: UserModel;
+    partnerResults: UserModel[] = [];
     markers: Marker[] = [];
 
     constructor(element: ElementRef,
@@ -35,25 +35,25 @@ export class Map {
         this.gMap = new google.maps.Map(container, MAP_DEFAULT_OPTIONS);
     }
 
-
-
     launchFilteredSearch(criteria:PartnerFilterCriteria){
         this.removeMarkers();
-        this._partnerService.getPartners(criteria).then((partners)=>this.partnerResults=partners);
-        //TODO: handle fail
-        this.partnerResults.forEach((partner)=>{
-            var gMarker = {
-                map: this.gMap,
-                lat: partner.lat,
-                lng: partner.lng,
-                label: partner.username,
-                partner: partner
-            }
-            this.addMarker(gMarker, partner);
+        this._partnerService.getPartners(criteria).subscribe((res)=>{
+            res.forEach((partner)=>{
+                var gMarker = {
+                    map: this.gMap,
+                    //use only default location
+                    lat: partner.locations[0].lat,
+                    lng: partner.locations[0].lng,
+                    label: partner.username,
+                    partner: partner
+                }
+                this.addMarker(gMarker, partner);
+                this.partnerResults = res;
+            })
         });
     }
 
-    showPartner(partner: PartnerModel){
+    showPartner(partner: UserModel){
         this.selectedPartner = partner;
     }
 
@@ -65,7 +65,7 @@ export class Map {
         this.markers.forEach((marker)=>marker.setMap(null));
     }
 
-    addMarker(opts: Marker, partner: PartnerModel){
+    addMarker(opts: Marker, partner: UserModel){
         opts.position = {
             lat: opts.lat,
             lng: opts.lng

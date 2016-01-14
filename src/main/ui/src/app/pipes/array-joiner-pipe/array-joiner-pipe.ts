@@ -5,7 +5,7 @@ import {Pipe} from 'angular2/core';
 })
 export class ArrayJoinerPipe {
 
-  transform(value:string[], args?) {
+  transform(value:any[], args?) {
     return value.join(", ");
   }
 

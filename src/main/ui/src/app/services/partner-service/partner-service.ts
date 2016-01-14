@@ -1,24 +1,29 @@
 import {Injectable} from 'angular2/core';
 import {PartnerFilterCriteria} from './partner-filter-criteria'
-import {PartnerModel} from './partner-model'
-import {MOCK_PARTNERS_OFFER_ENGLISH, MOCK_PARTNERS_OFFER_FRENCH, MOCK_PARTNERS_OFFER_GERMAN, MOCK_PARTNERS_OFFER_ITALIAN} from './mock-partners'
+import {Observable} from "rxjs/Observable";
+import {Http} from "angular2/http";
+import {UserModel} from "../user-service/user-model";
 
 
 @Injectable()
 export class PartnerService {
 
-    getPartners(criteria:PartnerFilterCriteria):Promise<PartnerModel[]> {
+    getPartners(criteria:PartnerFilterCriteria):Observable<UserModel[]> {
         if(criteria.partnerOfferedLanguageIso === 'fr'){
-            return Promise.resolve(MOCK_PARTNERS_OFFER_FRENCH);
+            return this.http.get('/js/app/services/partner-service/mock-partners-offer-french.json')
+                .map((request) => request.json());
         }else if (criteria.partnerOfferedLanguageIso === 'de'){
-            return Promise.resolve(MOCK_PARTNERS_OFFER_GERMAN);
+            return this.http.get('/js/app/services/partner-service/mock-partners-offer-german.json')
+                .map((request) => request.json());
         }else if (criteria.partnerOfferedLanguageIso === 'en'){
-            return Promise.resolve(MOCK_PARTNERS_OFFER_ENGLISH);
+            return this.http.get('/js/app/services/partner-service/mock-partners-offer-english.json')
+                .map((request) => request.json());
         }else{
-            return Promise.resolve(MOCK_PARTNERS_OFFER_ITALIAN);
+            return this.http.get('/js/app/services/partner-service/empty.json')
+                .map((request) => request.json());
         }
-
     }
-    constructor() {}
+
+    constructor(private http: Http) {}
 
 }

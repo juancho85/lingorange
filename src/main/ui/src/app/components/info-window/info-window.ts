@@ -1,7 +1,7 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {NgIf} from 'angular2/common';
-import {ArrayJoinerPipe} from '../../pipes/array-joiner-pipe/array-joiner-pipe';
 import {SendMessageModal} from '../send-message-modal/send-message-modal';
+import {LanguageJoinerPipe} from "../../pipes/language-joiner-pipe/language-joiner-pipe";
 
 
 @Component({
@@ -10,7 +10,7 @@ import {SendMessageModal} from '../send-message-modal/send-message-modal';
     styleUrls: ['js/app/components/info-window/info-window.css'],
     providers: [],
     directives: [NgIf, SendMessageModal],
-    pipes: [ArrayJoinerPipe],
+    pipes: [LanguageJoinerPipe],
     events: ['closePartnerDetailsEv']
 })
 

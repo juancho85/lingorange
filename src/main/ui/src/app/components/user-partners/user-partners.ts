@@ -1,9 +1,11 @@
 import {Component} from 'angular2/core';
 import {PartnerService} from '../../services/partner-service/partner-service';
-import {PartnerModel} from '../../services/partner-service/partner-model';
 import {PartnerFilterCriteria} from '../../services/partner-service/partner-filter-criteria'
 import {ArrayJoinerPipe} from '../../pipes/array-joiner-pipe/array-joiner-pipe';
 import {NgFor} from 'angular2/common';
+import {UserModel} from "../../services/user-service/user-model";
+import {Observable} from "rxjs/Observable";
+import {LanguageJoinerPipe} from "../../pipes/language-joiner-pipe/language-joiner-pipe";
 
 
 
@@ -13,19 +15,17 @@ import {NgFor} from 'angular2/common';
     styleUrls: ['js/app/components/user-partners/user-partners.css'],
     providers: [PartnerService],
     directives: [NgFor],
-    pipes: [ArrayJoinerPipe]
+    pipes: [LanguageJoinerPipe]
 })
 export class UserPartners {
-    public partners:PartnerModel[];
+    public partners:Observable<UserModel[]>;
 
     constructor(private _partnerService: PartnerService) {
-        //TODO: take as criteria the frienship with someone
-        var criteria = new PartnerFilterCriteria('en', 'en');
-        this._partnerService.getPartners(criteria).then((result)=>
-            {
-                this.partners = result;
-            }
-        );
+        //TODO: take as criteria the friendship with someone
+        var criteria = new PartnerFilterCriteria('en', 'es');
+        this.partners = this._partnerService.getPartners(criteria);
+        this.partners.subscribe((res)=>console.log(res));
+        console.log(this.partners);
     }
 
     unfollow(){
